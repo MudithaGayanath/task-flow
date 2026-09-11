@@ -8,7 +8,7 @@ export default async function Home() {
   let dbError: string | null = null;
 
   try {
-    tasks = await prisma.task.findMany({ orderBy: { createdAt: "desc" } });
+    tasks =await prisma.task.findMany(); 
   } catch (err) {
     console.log(err);
     
