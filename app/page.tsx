@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import TaskBoard from "@/components/TaskBoard";
 import type { Task } from "@/generated/prisma/client";
+import { log } from "console";
 
 export default async function Home() {
   let tasks: Task[] = [];
@@ -8,7 +9,9 @@ export default async function Home() {
 
   try {
     tasks = await prisma.task.findMany({ orderBy: { createdAt: "desc" } });
-  } catch {
+  } catch (err) {
+    console.log(err);
+    
     // Most likely cause on a fresh clone: DATABASE_URL isn't set yet, or
     // `prisma migrate dev` hasn't been run so the `Task` table doesn't exist.
     dbError =
