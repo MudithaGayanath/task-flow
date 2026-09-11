@@ -1,0 +1,24 @@
+// This is your Prisma schema file.
+// Learn more: https://pris.ly/d/prisma-schema
+//
+// Prisma 7 note: the database URL no longer lives here — see
+// prisma.config.ts at the project root — and Prisma Client is generated
+// into ./generated/prisma instead of node_modules.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  title     String
+  notes     String?  @db.Text
+  done      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
