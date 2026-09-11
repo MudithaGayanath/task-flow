@@ -13,7 +13,7 @@ const globalForPrisma = globalThis as unknown as {
 // Prisma 7 requires a driver adapter for every database — there's no more
 // "just works" engine baked into @prisma/client. PrismaMariaDb also covers
 // MySQL.
-const adapter = new PrismaMariaDb(process.env.DATABASE_URL!);
+const adapter = new PrismaMariaDb("mysql://root:ezcjRMXlzDqruQxoRAhcmGcmOXlqhmRW@mysql.railway.internal:3306/railway");
 
 export const prisma = globalForPrisma.prisma ?? new PrismaClient({ adapter });
 
