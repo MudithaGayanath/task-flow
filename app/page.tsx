@@ -29,13 +29,7 @@ export default async function Home() {
         </p>
       </header>
 
-      {dbError ? (
-        <div className="rounded border border-board-red/40 bg-board-red/10 px-4 py-3 font-mono text-sm text-board-red">
-          {dbError}
-        </div>
-      ) : (
-        <TaskBoard initialTasks={tasks} />
-      )}
+       <TaskBoard initialTasks={tasks} />
     </main>
   );
 }
